@@ -25,9 +25,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         spinner = binding.spinner
         val spinnerArrayList = arrayListOf<String>()
 
-        spinnerArrayList.add("guitar")
-        spinnerArrayList.add("drums")
-        spinnerArrayList.add("keyboard")
+        createSpinner(spinnerArrayList)
 
         val spinnerAdapter = ArrayAdapter(
             this,
@@ -56,6 +54,12 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             }
             spinner.onItemSelectedListener = this@MainActivity
         }
+    }
+
+    private fun createSpinner(spinnerArrayList: ArrayList<String>) {
+        spinnerArrayList.add("guitar")
+        spinnerArrayList.add("drums")
+        spinnerArrayList.add("keyboard")
     }
 
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
