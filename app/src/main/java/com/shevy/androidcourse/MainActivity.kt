@@ -1,9 +1,11 @@
 package com.shevy.androidcourse
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.EditText
 import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import com.shevy.androidcourse.databinding.ActivityMainBinding
@@ -15,6 +17,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private lateinit var spinner: Spinner
     lateinit var goodsMap: MutableMap<String, Double>
     lateinit var goodsName: String
+    lateinit var userNameEditText: EditText
     var price by Delegates.notNull<Double>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,6 +25,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        userNameEditText = binding.nameEditText
         spinner = binding.spinner
         val spinnerArrayList = arrayListOf<String>()
 
@@ -51,6 +55,20 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 if (quantity < 0) quantity = 0
                 quantityCountTextView.text = quantity.toString()
                 binding.priceTextView.text = (quantity * price).toString()
+            }
+            addToCartBtn.setOnClickListener {
+                val order = Order()
+                order.userName = userNameEditText.text.toString()
+                order.goodsName = goodsName
+                order.quantity = quantity
+                order.orderPrice = quantity * price
+
+                val orderIntent = Intent(this@MainActivity, OrderActivity::class.java)
+                orderIntent.putExtra("userNameForIntent", order.userName)
+                orderIntent.putExtra("goodsName", order.goodsName)
+                orderIntent.putExtra("quantity", order.quantity)
+                orderIntent.putExtra("orderPrice", order.orderPrice)
+                startActivity(orderIntent)
             }
             spinner.onItemSelectedListener = this@MainActivity
         }
