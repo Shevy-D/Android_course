@@ -22,12 +22,12 @@ class MainActivity : AppCompatActivity() {
 
         binding.imageViewTom.setOnClickListener {
             if (isTomVisible) {
-                binding.imageViewTom.animate().alpha(0f).duration = 3000
-                binding.imageViewJerry.animate().alpha(1f).duration = 3000
+                binding.imageViewTom.animate().alpha(0f).rotation(3600f).duration = 3000
+                binding.imageViewJerry.animate().alpha(1f).rotation(3600f).duration = 3000
                 isTomVisible = false
             } else {
-                binding.imageViewJerry.animate().alpha(0f).duration = 3000
-                binding.imageViewTom.animate().alpha(1f).duration = 3000
+                binding.imageViewJerry.animate().alpha(0f).rotation(-3600f).duration = 3000
+                binding.imageViewTom.animate().alpha(1f).rotation(-3600f).duration = 3000
                 isTomVisible = true
             }
         }
