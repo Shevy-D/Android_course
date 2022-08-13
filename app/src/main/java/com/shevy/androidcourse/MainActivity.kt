@@ -26,11 +26,9 @@ class MainActivity : AppCompatActivity() {
                 binding.imageViewJerry.animate().alpha(1f).duration = 3000
                 isTomVisible = false
             } else {
-
                 binding.imageViewJerry.animate().alpha(0f).duration = 3000
                 binding.imageViewTom.animate().alpha(1f).duration = 3000
                 isTomVisible = true
-
             }
         }
     }
