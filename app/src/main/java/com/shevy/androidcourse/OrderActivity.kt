@@ -31,6 +31,7 @@ class OrderActivity : AppCompatActivity() {
         binding.apply {
             orderTextView.text = emailText
 /*            orderTextView.text = userName
+            orderTextView2.text = goodsName
             orderTextView3.text = quantity.toString()
             orderTextView4.text = orderPrice.toString()*/
 
